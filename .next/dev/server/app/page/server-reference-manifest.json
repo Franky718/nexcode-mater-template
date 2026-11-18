@@ -9,6 +9,16 @@
       },
       "exportedName": "obtenerMemoriaJarvis",
       "filename": "app/actions/master-actions.ts"
+    },
+    "405fd165c35f846c7782e6bc3be94b13d1e8bb8400": {
+      "workers": {
+        "app/page": {
+          "moduleId": "[project]/.next-internal/server/app/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/actions/master-actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false
+        }
+      },
+      "exportedName": "ejecutarJarvisCore",
+      "filename": "app/actions/master-actions.ts"
     }
   },
   "edge": {}
