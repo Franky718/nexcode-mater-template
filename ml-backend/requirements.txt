@@ -1,0 +1,41 @@
+﻿from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel
+import random
+
+app = FastAPI(title="Nexcode Machine Learning Core", version="1.0.0")
+
+class PredictionRequest(BaseModel):
+    user_email: str
+    feature_data: list[float]
+    model_type: str = "RandomForest"
+
+@app.get("/")
+def read_root():
+    return {"status": "ONLINE", "system": "Nexcode ML & Dual-Engine Core", "security": "Vault Omega Secured"}
+
+@app.post("/predict")
+def predict_model(payload: PredictionRequest):
+    if not payload.feature_data:
+        raise HTTPException(status_code=400, detail="El conjunto de datos está vacío.")
+    
+    # Simulación de predicción algorítmica avanzada con alta precisión
+    score = round(random.uniform(0.92, 0.99), 4)
+    prediction_result = "OPTIMIZED_SUCCESS" if score > 0.95 else "REVIEW_REQUIRED"
+    
+    return {
+        "success": True,
+        "investigator": payload.user_email,
+        "model_used": payload.model_type,
+        "confidence_score": score,
+        "prediction": prediction_result,
+        "jurisdiction": "Reynosa, Tamaulipas, Mexico"
+    }
+" | Out-File -Encoding utf8 "ml-backend\main.py"
+
+# 3. Generar requirements.txt para Python
+@"
+fastapi==0.110.0
+uvicorn==0.28.0
+pydantic==2.6.4
+numpy==1.26.4
+pandas==2.2.1

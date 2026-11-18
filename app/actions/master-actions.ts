@@ -7,7 +7,8 @@ import crypto from 'crypto'
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || ''
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ''
-const supabase = createClient(supabaseUrl, supabaseAnonKey)
+const isValidUrl = supabaseUrl.startsWith('http://') || supabaseUrl.startsWith('https://');
+const supabase = isValidUrl ? createClient(supabaseUrl, supabaseAnonKey) : null;
 
 const SUPERVISOR_AUTORIZADO = 'fg782270@gmail.com'
 // LLAVE OMEGA MAESTRA: Única contraseña criptográfica de blindaje absoluto conocida solo por el C. Francisco
@@ -148,3 +149,4 @@ export async function obtenerMemoriaJarvis() {
 
     return { success: true, memorias: [] }
 }
+
